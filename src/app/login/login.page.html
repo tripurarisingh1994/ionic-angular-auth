@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="login-container">
+    <form (ngSubmit)="doLogin()" [formGroup]="loginForm">
+      <div class="auth-container">
+
+        <ion-item>
+          <ion-label position="floating">Email Id / Mob No.</ion-label>
+          <ion-input formControlName="emailMob"></ion-input>
+        </ion-item>
+
+        <div *ngIf="fc.emailMob.invalid && (fc.emailMob.dirty || fc.emailMob.touched)">
+          <span class="error ion-padding-top" *ngIf="fc.emailMob.errors?.required">Email Id / Mob No. is required</span>
+          <span class="error ion-padding-top" *ngIf="fc.emailMob.errors?.pattern">Email Id / Mob No. must be valid</span>
+       </div>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="text" formControlName="password"></ion-input>
+        </ion-item>
+
+        <div *ngIf="fc.password.invalid && (fc.password.dirty || fc.password.touched)">
+          <span class="error ion-padding-top" *ngIf="fc.password.errors?.required">Password is required</span>
+          <span class="error ion-padding-top" *ngIf="fc.password.errors?.pattern">Password must be a minimum of 8
+            characters including Upper, Lower, Number And
+            one special character
+     </span>
+       </div>
+
+        <ion-button [disabled]="!loginForm.valid" type="submit" class="auth-l-r-btn" color="primary">Login</ion-button>
+
+        <div [ngStyle]="{'display': 'flex', 'align-items' : 'center'}">Not a member? <ion-button style="--padding-start: 2px" routerLink="/register" fill="clear">Register</ion-button></div>
+
+        <div style="color: red;">{{msg}}</div>
+      </div>
+    </form>
+
+  </div>
+</ion-content>

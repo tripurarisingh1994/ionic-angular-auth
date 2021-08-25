@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-group>
+    <ng-container *ngFor="let user of users; let i=index">
+    
+    <ion-item-divider>
+      <ion-label>User {{i+1}}</ion-label>
+    </ion-item-divider>
+  
+    <ion-item>
+      <ion-label>Name : {{user.name}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email : {{user.email}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mobile : {{user.mob}}</ion-label>
+    </ion-item>
+
+  </ng-container>
+
+  </ion-item-group>
+
+  <div style="display: flex; justify-content: center;">
+    <ion-button style="margin-top: 20px; width: 7vw;" color="primary" (click)="logout()">LogOut</ion-button>
+  </div>
+  
+
+</ion-content>
